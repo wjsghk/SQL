@@ -2370,6 +2370,23 @@ end;
 /
 --=>1~10
 
-
-
+--40까지 while문으로 구하기
+declare
+     vdept dept%rowtype;
+     n number :=1;
+begin
+    while(n<=4) loop
+        select *
+       into vdept
+       from dept
+       where deptno = 10 * n;
+     dbms_output.put_line(vdept.deptno||''||vdept.dname||''||vdept.loc);
+          n := n +1;
+    end loop;
+end;
+/
+--10ACCOUNTINGNEW YORK
+--20RESEARCHDALLAS
+--30SALESCHICAGO
+--40OPERATIONSBOSTON
 
