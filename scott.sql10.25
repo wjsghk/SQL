@@ -2062,7 +2062,6 @@ end;
 --SMITH / CLERK
 --ALLEN / SALESMAN
 --WARD / SALESMAN
--------------------------------------------------------------------------
 
 
 -----record레코드 타입변수
@@ -2092,6 +2091,8 @@ create table dept_record
 as
 select* from dept;
 
+-------레코드를 사용한 insert
+--삽입,수정 할때는 레코드르 사용할 테이블을 만들어준다.
 declare 
  TYPE rec_dept IS RECORD(
       v_deptno dept_record.deptno%type,
@@ -2117,7 +2118,9 @@ select * from dept_record;
 --50	DEV	        BUSAN
 --50	DEV      	BUSAN
 
---------위 컬럼을 update하기
+--------위 컬럼을 레코드를 사용한 update하기
+--set절은 row키워드와 함께 레코드 이름을 명시한다
+--행 전체의 데이터를 바꿔준다
 declare 
  TYPE rec_dept IS RECORD(
       v_deptno dept_record.deptno%type not null := 99,
@@ -2154,6 +2157,8 @@ declare
   where deptno = v_deptno;
  end;
  /
+ 
+ select*from dept_record;--결과조회하기
 --10	ACCOUNTING	NEW YORK
 --20	RESEARCH	DALLAS
 --30	SALES	CHICAGO
